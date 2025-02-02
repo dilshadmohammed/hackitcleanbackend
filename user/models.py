@@ -10,7 +10,7 @@ def default_expiry():
     return timezone.now() + timedelta(days=7)
 
 class User(AbstractBaseUser):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid4)
     username = models.CharField(max_length=100, unique=True)
     admission_no = models.CharField(max_length=12, unique=True, editable=False, default=f'ADM-{uuid.uuid4().hex[:8].upper()}')
     current_bill = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
