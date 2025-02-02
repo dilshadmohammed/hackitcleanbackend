@@ -126,9 +126,10 @@ class UserDetails(APIView):
         user = User.objects.filter(id=user_id).first()
         return CustomResponse(response={
                         "user_id":user.id,
-                        "username":user.username
+                        "username":user.username,
+                        "admission_no":user.admission_no,
+                        "current_bill":user.current_bill
                     }).get_success_response()
-
 
 
 
